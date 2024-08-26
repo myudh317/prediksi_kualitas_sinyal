@@ -1,0 +1,8 @@
+folium
+joblib
+streamlit_option_menu
+scikit-learn
+gcsfs
+st-files-connection
+google-cloud-storage
+streamlit_folium
