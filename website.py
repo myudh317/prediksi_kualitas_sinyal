@@ -121,11 +121,17 @@ elif selected == "Predictions":
         
         # Asumsi data memiliki kolom 'Latitude', 'Longitude', dan 'RSRP'
         if 'Latitude' in df.columns and 'Longitude' in df.columns and 'RSRP' in df.columns:  
+            # kmeans, rf, scaler = load_models_from_gcs(
+            #     'model-skripsi-ml', 
+            #     'kmeans_model.pkl', 
+            #     'random_forest_model.pkl', 
+            #     'scaler.pkl'
+            # )
             kmeans, rf, scaler = load_models_from_gcs(
                 'model-skripsi-ml', 
-                'kmeans_model.pkl', 
-                'random_forest_model.pkl', 
-                'scaler.pkl'
+                'kmeans_model2.pkl', 
+                'random_forest_model2.pkl', 
+                'scaler2.pkl'
             )
             
             def predict_rsrq(rsrp, longitude, latitude):
@@ -156,7 +162,8 @@ elif selected == "Predictions":
             route_data.replace('-', np.nan, inplace=True)
             route_data.dropna(subset=['RSRP', 'Longitude', 'Latitude'], inplace=True)
 
-            route_data_subset = route_data.sample(frac=0.1, random_state=42)
+            # route_data_subset = route_data.sample(frac=0.1, random_state=42)
+            route_data_subset = route_data.sample(frac=0.01, random_state=42)
             
             # Ensure route_data does not contain NaN values
             if route_data[['Latitude', 'Longitude']].isnull().any().any():
