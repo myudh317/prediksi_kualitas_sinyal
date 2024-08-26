@@ -6,3 +6,4 @@ gcsfs
 st-files-connection
 google-cloud-storage
 streamlit_folium
+openpyxl
